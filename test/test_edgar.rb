@@ -26,10 +26,16 @@ class EdgarTest < Test::Unit::TestCase
     assert_equal false, e.search('helicoid').empty?
   end
 
-  # requires internet connectivity
   # TODO test this 
   def test_return_nil_on_error
     e = Edgar.new('example.com', 10)
+  end
+
+  # requires internet connectivity
+  def test_return_empty_if_not_results
+    e = Edgar.new('example.com')
+    # if 'Ambiogenesis568' returns results this test is trivial
+    assert_equal true, e.search('Ambiogenesis568').empty?
   end
 end
 
