@@ -1,4 +1,5 @@
 require 'cgi'
+require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 require 'result'
@@ -28,6 +29,9 @@ class Edgar
     response = open(API_PATH + params, { 'Referer' => @referer })
     return nil if response.class.superclass == Net::HTTPServerError
     doc = Nokogiri::HTML(response)
+    # check that results were returned
+    no_results = doc.css('#ifrm2 font.normalbold')[0]
+    return [] if no_results and no_results.content == 'No Results were Found.'
     # fetch number of results so we slice properly
     num_returned = doc.css('#header td:first font.normalbold')[0].content.match(/- (\d+)/)[1].to_i
     css_types = {
