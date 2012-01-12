@@ -37,5 +37,12 @@ class EdgarTest < Test::Unit::TestCase
     # if 'Ambiogenesis568' returns results this test is trivial
     assert_equal true, e.search('Ambiogenesis568').empty?
   end
+
+  # requires internet connectivity
+  def test_return_empty_if_not_results2
+    e = Edgar.new('example.com')
+    # if 'Ambiogenesis568' returns results this test is trivial
+    assert_equal true, e.search(CGI.unescape('%E9%A6%99%E5%8D%9A%E5%8D%9A')).empty?
+  end
 end
 

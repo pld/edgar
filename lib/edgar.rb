@@ -33,7 +33,9 @@ class Edgar
     no_results = doc.css('#ifrm2 font.normalbold')[0]
     return [] if no_results and no_results.content == 'No Results were Found.'
     # fetch number of results so we slice properly
-    num_returned = doc.css('#header td:first font.normalbold')[0].content.match(/- (\d+)/)[1].to_i
+    num_returned = doc.css('#header td:first > font.normalbold')[0]
+    return [] if num_returned == nil
+    num_returned = num_returned.content.match(/- (\d+)/)[1].to_i
     css_types = {
       :date => 0,
       :title_url => 1,
