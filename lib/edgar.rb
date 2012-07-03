@@ -1,15 +1,19 @@
 require 'cgi'
 require 'rubygems'
+
 require 'nokogiri'
 require 'open-uri'
-require 'result'
+
+
+EdgarResult = Struct.new :title, :abstract, :url, :date
+
 
 class Edgar 
   # API to Edgar search API
   # 
   # Example:
   #   >> Edgar.new('[Referer]').search('nano fibers')
-  #   => [ #<Result:...>, ... ]
+  #   => [ #<EdgarResult:...>, ... ]
   #
   # Arguments:
   #   referer: (String)
@@ -50,12 +54,12 @@ class Edgar
       el
     end.transpose
     tag_sets.map do |tag_set|
-      Result.new({
-        :title => tag_set[css_types[:title_url]].content,
-        :abstract => tag_set[css_types[:abstract]].content,
-        :url => tag_set[css_types[:title_url]]['href'].match(/'([^']+)'/)[1],
-        :date => tag_set[css_types[:date]].content
-      })
+      EdgarResult.new(
+        tag_set[css_types[:title_url]].content,
+        tag_set[css_types[:abstract]].content,
+        tag_set[css_types[:title_url]]['href'].match(/'([^']+)'/)[1],
+        tag_set[css_types[:date]].content
+      )
     end
   end
 end

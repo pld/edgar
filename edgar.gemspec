@@ -6,7 +6,7 @@ s = Gem::Specification.new do |s|
   s.description  = 'API for SEC Edgar search'
   s.authors      = ['Peter Lubell-Doughtie']
   s.email        = 'peter@helioid.com'
-  s.files        = ['lib/edgar.rb', 'lib/result.rb']
+  s.files        = ['lib/edgar.rb']
   s.homepage     = 'http://www.helioid.com/'
 end
 
