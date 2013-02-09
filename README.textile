@@ -1,7 +1,7 @@
 h1. edgar
 
 Gem providing a API to search the SEC Edgar database
-https://rubygems.org/gems/springer
+https://rubygems.org/gems/edgar
 
 h2. Installation
 
