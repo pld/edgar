@@ -19,7 +19,7 @@ class Edgar
   #   referer: (String)
   #   num_results: (Integer+)
 
-  API_PATH = "http://searchwww.sec.gov/EDGARFSClient/jsp/EDGAR_MainAccess.jsp"
+  API_PATH = "https://searchwww.sec.gov/EDGARFSClient/jsp/EDGAR_MainAccess.jsp"
 
   attr_accessor :referer, :num_results
 
