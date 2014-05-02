@@ -68,16 +68,19 @@ class Edgar
 
   def get_url(tag_set)
     node = tag_set[CSS_TYPES[:title_url]]
-    node && node['href'].match(/'([^']+)'/)[1]
+    node && node['href'].match(/'([^']+)'/)[1] || ''
   end
 
   def get_tag(tag_set, key)
     node = tag_set[CSS_TYPES[key]]
-    node && node.content
+    node && node.content || ''
   end
 
   def safe_transpose(a)
     max_size = a.map(&:size).max
-    a.dup.map { |r| r << '' while r.size < max_size; r}.transpose
+    a.dup.map do |r|
+      r << nil while r.size < max_size
+      r
+    end.transpose
   end
 end
