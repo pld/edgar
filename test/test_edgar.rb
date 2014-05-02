@@ -26,7 +26,7 @@ class EdgarTest < Test::Unit::TestCase
     assert_equal false, e.search('helicoid').empty?
   end
 
-  # TODO test this 
+  # TODO test this
   def test_return_nil_on_error
     e = Edgar.new('example.com', 10)
   end
