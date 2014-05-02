@@ -78,6 +78,6 @@ class Edgar
 
   def safe_transpose(a)
     max_size = a.map(&:size).max
-    a.dup.map { |r| r << nil while r.size < max_size; r}.transpose
+    a.dup.map { |r| r << '' while r.size < max_size; r}.transpose
   end
 end
