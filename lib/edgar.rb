@@ -68,7 +68,7 @@ class Edgar
 
   def get_url(tag_set)
     node = tag_set[CSS_TYPES[:title_url]]
-    href = node['href']
+    href = node && node['href']
     href && href.match(/'([^']+)'/)[1] || ''
   end
 

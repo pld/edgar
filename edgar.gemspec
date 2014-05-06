@@ -1,6 +1,6 @@
 s = Gem::Specification.new do |s|
   s.name         = 'edgar'
-  s.version      = '0.0.11'
+  s.version      = '0.0.12'
   s.date         = '2011-12-27'
   s.summary      = 'API for SEC Edgar search'
   s.description  = 'API for SEC Edgar search'
